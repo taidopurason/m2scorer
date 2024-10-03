@@ -270,6 +270,7 @@ def batch_multi_pre_rec_f1(candidates, sources, gold_edits, max_unchanged_words=
         columns = ["f1", "p", "r"]
         means = {column: mean([x[column] for x in res]) for column in columns}
         stderrs = {column: sample_stddev([x[column] for x in res]) for column in columns}
+        print stat_proposed_examples
         print "means", means
         print "stderrs", stderrs
 
