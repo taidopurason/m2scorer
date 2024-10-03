@@ -56,7 +56,7 @@ def split_data(x):
 
 
 def mean(arr):
-    return sum(arr) / len(arr)
+    return sum(arr) / float(len(arr))
 
 
 def sample_stddev(arr):
@@ -263,7 +263,6 @@ def batch_multi_pre_rec_f1(candidates, sources, gold_edits, max_unchanged_words=
             stat_gold_examples=stat_gold_examples
         )
         rnd = random.Random(seed)
-        print(stat_proposed_examples)
         res = []
         for _ in range(bootstrap_n):
             res.append(_evaluate([rnd.choice(data) for _ in range(len(data))], beta=beta))
@@ -271,8 +270,8 @@ def batch_multi_pre_rec_f1(candidates, sources, gold_edits, max_unchanged_words=
         columns = ["f1", "p", "r"]
         means = {column: mean([x[column] for x in res]) for column in columns}
         stderrs = {column: sample_stddev([x[column] for x in res]) for column in columns}
-        print("means", means)
-        print("stderrs", stderrs)
+        print "means", means
+        print "stderrs", stderrs
 
     if verbose:
         print "CORRECT EDITS  :", int(stat_correct)
