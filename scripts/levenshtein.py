@@ -266,7 +266,7 @@ def batch_multi_pre_rec_f1(candidates, sources, gold_edits, max_unchanged_words=
 
         res = []
         for _ in range(bootstrap_n):
-            res.append(_evaluate(rnd.choices(data, k=len(data)), beta=beta))
+            res.append(_evaluate([rnd.choice(data) for _ in range(len(data))], beta=beta))
 
         columns = ["f1", "p", "r"]
         means = {column: mean([x[column] for x in res]) for column in columns}
