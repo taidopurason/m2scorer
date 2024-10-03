@@ -263,7 +263,7 @@ def batch_multi_pre_rec_f1(candidates, sources, gold_edits, max_unchanged_words=
             stat_gold_examples=stat_gold_examples
         )
         rnd = random.Random(seed)
-
+        print(stat_proposed_examples)
         res = []
         for _ in range(bootstrap_n):
             res.append(_evaluate([rnd.choice(data) for _ in range(len(data))], beta=beta))
